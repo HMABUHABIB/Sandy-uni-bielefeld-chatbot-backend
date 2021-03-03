@@ -24,13 +24,11 @@ const client = createClient(vbbProfile, 'my-awesome-program');
 
 let admin = require("firebase-admin");
 admin.initializeApp(process.env.firebaseConfig);
-let database = admin.database();
-let ref = database.ref("Question");
-let ref2 = database.ref("Oct 10th 19");
+
 
 // Get google place from id for that place
 function getGooglePlaceFromID(place_id) {
-  return axios.get('https://maps.googleapis.com/maps/api/place/details/json?place_id=' + place_id + '&fields=opening_hours/weekday_text,opening_hours,formatted_address,name,rating,formatted_phone_number&key=AIzaSyDtFoHr7Yz_d1dLeUCiaAye2Cg-PhzuyCo');
+  return axios.get('https://maps.googleapis.com/maps/api/place/details/json?place_id=' + place_id + '&fields=opening_hours/weekday_text,opening_hours,formatted_address,name,rating,formatted_phone_number&key=****');
 }
 
 // Get Train and Bus data from transport.rest
@@ -63,7 +61,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     // Post the message above to slack
     requestLib.post({
       headers: { 'content-type': 'application/json' },
-      url: "https://hooks.slack.com/services/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",
+      url: "https://hooks.slack.com/services/****",
       body: JSON.stringify(slackMessageBody)
     }, function (error, response, body) {
       console.log('Slack notification response body: ' + JSON.stringify(body) + ', error: ' + error);
